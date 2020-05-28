@@ -3,5 +3,5 @@ from rest.apps.main.models import Restorant
 
 # Create your views here.
 def index(request):
-    list = Restorant.objects.all()
-    return render(request,'index.html', {'list': list,})
+    restorants = Restorant.objects.all()
+    return render(request,'index.html', {'list': restorants})

@@ -7,7 +7,8 @@
 <body>
 {% block content %}
     {% for item in list %}
-        <p>{{ item }}   {{ jjj }}</p>
+        <p>{{ item.name_restorant }} </p>
+        <p>{{ item.rescription_restorant }}</p>
     {% endfor %}
 {% endblock %}
 </body>
