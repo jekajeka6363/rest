@@ -9,13 +9,16 @@
     <table border="1">
         <caption>Таблица ресторанов</caption>
     <tr>
-        <th>Название ресторана</th>
-         <th>Отзыв</th>
+         <th>Название ресторана  </th>
+         <th>Отзыв              </th>
+         <th> Рейтинг              </th>
     </tr>
     {% for item in restorants %}
         <tr>
-            <td>{{ item.name_restorant }}       </td>
+            <td>{{ item.name_restorant }}      </td>
             <td>{{ item.rescription_restorant }}</td>
+            <td>{{ item.rating_restorant }}</td>
+
         </tr>
     {% endfor %}
 
