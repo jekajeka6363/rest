@@ -2,7 +2,7 @@ from django.db import models
 
 class Restorant(models.Model):
     name_restorant = models.CharField(max_length=20)
-    rescription_restorant = models.CharField(max_length=20)
+    rescription_restorant = models.CharField(max_length=200)
     rating_restorant = models.IntegerField()
 
 
