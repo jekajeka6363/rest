@@ -15,7 +15,7 @@
     </tr>
     {% for item in restorants %}
         <tr>
-            <td>{{ item.name_restorant }}      </td>
+            <td> <a href="{{ item.id}}">{{ item.name_restorant }}</a></td>
             <td>{{ item.rescription_restorant }}</td>
             <td>{{ item.rating_restorant }}</td>
 
@@ -23,6 +23,18 @@
     {% endfor %}
 
     </table>
+{% endblock %}
+<br><br><br><br>
+{% block form %}
+
+    <form action="\form\" method="post">
+        {% csrf_token %}
+          <p><b>тестовая форма</b></p>
+          <p><input type="text" size="40" name="name_restorant">Название ресторана<Br>
+          <p><input type="text" size="40" name="rescription_restorant">Описание ресторана<Br>
+          <p><input type="text" size="40" name="rating_restorant">Оценка<Br>
+          <p><input type="submit"></p>
+ </form>
 {% endblock %}
 </body>
 </html>
