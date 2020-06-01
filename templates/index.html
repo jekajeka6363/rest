@@ -5,17 +5,6 @@
     <title>hello</title>
 </head>
 <body>
-{% block form %}
-    <form action="\form\" method="post">
-        {% csrf_token %}
-          <p><b>тестовая форма</b></p>
-          <p><input type="text" size="40" name="name_restorant">Название ресторана<Br>
-          <p><input type="text" size="40" name="rescription_restorant">Описание ресторана<Br>
-          <p><input type="text" size="40" name="rating_restorant">Оценка<Br>
-          <p><input type="submit"></p>
- </form>
-{% endblock %}
-
 {% block content %}
     <table border="1">
         <caption>Таблица ресторанов</caption>
@@ -36,6 +25,14 @@
     </table>
 {% endblock %}
 <br><br><br><br>
+{% block form %}
+    <h1>Добавить новый ресторан</h1>
+   <form action="" method="POST" class="">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" >Save</button>
+    </form>
+{% endblock %}
 
+{{ form.base_fields }}
 </body>
 </html>

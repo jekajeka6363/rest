@@ -1,14 +1,28 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{{ name }}</title>
+    <style type="text/css">
+   div {
+    height: 500px; /* Высота блока */
+    width: 300px; /* Ширина блока */
+    overflow: auto; /* Добавляем полосы прокрутки */
+    padding-left: 15px; /* Отступ от текста слева */
+    background: url(images/hand.png) repeat-y #fc0; /* Цвет фона,
+                                                    путь к фоновому изображению и
+                                                    повторение фона по вертикали */
+   }
+  </style>
 </head>
 <body>
+<div>
 Ресторан <h1><p>{{ name }}</p></h1>
 
 Описание <h2><p>{{ name.rescription_restorant}}</p></h2>
 
 Рейтинг <h3><p>{{ name.rating_restorant }}</p></h3>
+    </div>
 </body>
 </html>
