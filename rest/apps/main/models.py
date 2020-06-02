@@ -5,6 +5,5 @@ class Restorant(models.Model):
     rescription_restorant = models.CharField(max_length=200)
     rating_restorant = models.IntegerField()
 
-
     def __str__(self):
         return self.name_restorant

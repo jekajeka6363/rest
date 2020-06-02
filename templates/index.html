@@ -5,6 +5,22 @@
     <title>hello</title>
 </head>
 <body>
+
+{% block form2 %}
+    <h3>Добавить ресторан</h3>
+   <form action="{% url 'rest-create' %}" method="POST" class="">{% csrf_token %}
+        {% for fields in form %}
+            {% if fields.errors %}
+                <div class="alert" >
+              <h3>{{ fields.errors }}</h3>
+                </div>
+            {% endif %}
+            {{ fields }}: {{ fields.label }}<br>
+       {% endfor %}
+        <button type="submit" >Save</button>
+    </form>
+{% endblock %}
+<br><br><br><br>
 {% block content %}
     <table border="1">
         <caption>Таблица ресторанов</caption>
@@ -24,15 +40,6 @@
 
     </table>
 {% endblock %}
-<br><br><br><br>
-{% block form %}
-    <h1>Добавить новый ресторан</h1>
-   <form action="" method="POST" class="">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" >Save</button>
-    </form>
-{% endblock %}
 
-{{ form.base_fields }}
 </body>
 </html>
