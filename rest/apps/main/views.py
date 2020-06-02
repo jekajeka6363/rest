@@ -1,9 +1,6 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect,get_object_or_404
 from rest.apps.main.models import Restorant
 from .forms import RestourantForm
-
-# Create your views here.
-
 
 def index(request):
     restorants = Restorant.objects.all().order_by("-rating_restorant")
@@ -21,5 +18,5 @@ def index(request):
 
 
 def rest_detail(request, rest_detail):
-    name = Restorant.objects.get(id=rest_detail)
+    name = get_object_or_404(Restorant, id=rest_detail)
     return render(request, "rest_detail.html", {"name": name})
