@@ -11,11 +11,10 @@ def index(request):
         bound_form = RestourantForm(request.POST)
         if bound_form.is_valid():
             bound_form.save()
-            return render(request, "index.html", {'restorants': restorants,
+
+        return render(request, "index.html", {'restorants': restorants,
                                           'form': bound_form})
-        else:
-            return render(request, "index.html", {'restorants': restorants,
-                                                  'form': bound_form})
+
 
     form = RestourantForm()
     return render(request, 'index.html', {'restorants': restorants,
