@@ -5,6 +5,10 @@
     <title>Регистрация нового пользователя</title>
 </head>
 <body>
+<form action="/auth" method="post"> {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" >Save</button>
+</form>
 
 </body>
 </html>

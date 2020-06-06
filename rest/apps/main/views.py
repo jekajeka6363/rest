@@ -1,9 +1,27 @@
-from django.shortcuts import render, HttpResponse, redirect,get_object_or_404
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from rest.apps.main.models import Restorant
 from .forms import RestourantForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
+
+
+def auth(request):
+    print(request.POST)
+    form = UserCreationForm(request.POST)
+    if request.method == "POST" and form.is_valid:
+        form.save()
+        user = authenticate(request, username=form.data.get("username"), password=form.data.get("password2"))
+        login(request,user)
+        return redirect("index")
+
+    return render(request, 'auth.html', {"form": form})
+
 
 def index(request):
     restorants = Restorant.objects.all().order_by("-rating_restorant")
+    login = AuthenticationForm()
     if request.method == "POST" :
         bound_form = RestourantForm(request.POST)
         if bound_form.is_valid():
@@ -14,7 +32,8 @@ def index(request):
 
     form = RestourantForm()
     return render(request, 'index.html', {'restorants': restorants,
-                                          'form': form})
+                                          'form': form,
+                                          "login": login})
 
 
 def rest_detail(request, rest_detail):

@@ -26,8 +26,9 @@
     </table>
 {% endblock %}
 <br><br><br><br>
+{% if request.user.is_authenticated %}
 {% block form2 %}
-    <h3>Добавить ресторан</h3>
+    <h3> Поздравляю вы зарегестрированы вы можете Добавить ресторан</h3>
    <form action="{% url 'rest-create' %}" method="POST" class="">{% csrf_token %}
         {% for fields in form %}
             {% if fields.errors %}
@@ -39,6 +40,16 @@
        {% endfor %}
         <button type="submit" >Save</button>
     </form>
+
 {% endblock %}
+    {% else %}
+    Зарегестрированные пользователи могут добавлять рестораны
+    Заполните форму регистрации
+    <form action="{% url 'auth' %}" method="get"> {% csrf_token %}
+        <button type="submit" > Зарегестрироваться </button>
+    </form>
+{% endif %}
+<br>
+
 </body>
 </html>
