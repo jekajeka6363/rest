@@ -40,12 +40,17 @@
        {% endfor %}
         <button type="submit" >Save</button>
     </form>
-
+        <form action="{% url 'auth' %}" method="POST">{% csrf_token %}
+        <input type="submit" value="Logout" />
+        <input type="hidden" name="logout" value="logout" />
+    </form>
 {% endblock %}
     {% else %}
+
     Зарегестрированные пользователи могут добавлять рестораны
     Заполните форму регистрации
     <form action="{% url 'auth' %}" method="get"> {% csrf_token %}
+
         <button type="submit" > Зарегестрироваться </button>
     </form>
 {% endif %}
