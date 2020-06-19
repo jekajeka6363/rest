@@ -7,6 +7,19 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 
 
+def log(request):
+    print(request.POST)
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect("index")
+    else:
+        return redirect("index")
+
+
+
 def auth(request):
     form = UserCreationForm(request.POST)
     i = 1
@@ -15,6 +28,7 @@ def auth(request):
             logout(request)
             i = 0
             return redirect("index")
+
     except:
         pass
 
@@ -30,7 +44,7 @@ def auth(request):
 def index(request):
     restorants = Restorant.objects.all().order_by("-rating_restorant")
     login = AuthenticationForm()
-    if request.method == "POST" :
+    if request.method == "POST":
         bound_form = RestourantForm(request.POST)
         if bound_form.is_valid():
             bound_form.save()

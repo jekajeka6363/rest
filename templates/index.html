@@ -53,6 +53,12 @@
 
         <button type="submit" > Зарегестрироваться </button>
     </form>
+
+    </form>
+        <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+        {{ login.as_p }}
+        <input type="submit" value="login" />
+    </form>
 {% endif %}
 <br>
 
